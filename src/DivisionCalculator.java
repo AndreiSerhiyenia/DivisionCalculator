@@ -59,7 +59,7 @@ public class DivisionCalculator extends JFrame implements ActionListener {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                DivisionCalculator calculator = new DivisionCalculator();
+                DivisionCalculatorVersion2 calculator = new DivisionCalculatorVersion2();
                 calculator.setVisible(true);
             }
         });

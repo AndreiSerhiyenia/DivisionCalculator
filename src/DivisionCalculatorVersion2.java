@@ -18,7 +18,7 @@ public class DivisionCalculatorVersion2 extends JFrame implements ActionListener
         mainPanel = new JPanel(new GridLayout(2, 1, 10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JLabel divisionLabel = new JLabel("Enter two numbers for division (separated by a comma):");
+        JLabel divisionLabel = new JLabel("Enter two numbers for division:");
         divisionField = new JTextField();
         divisionButton = new JButton("Divide");
         divisionButton.addActionListener(this);
@@ -35,10 +35,10 @@ public class DivisionCalculatorVersion2 extends JFrame implements ActionListener
         if (e.getSource() == divisionButton) {
             try {
                 String divisionText = divisionField.getText();
-                String[] numbers = divisionText.split(",");
+                String[] numbers = divisionText.split("\\s+");
 
                 if (numbers.length != 2) {
-                    throw new IllegalArgumentException("Please enter two numbers separated by a comma.");
+                    throw new IllegalArgumentException("Please enter two numbers separated by space.");
                 }
 
                 double dividend = Double.parseDouble(numbers[0]);
@@ -70,7 +70,7 @@ public class DivisionCalculatorVersion2 extends JFrame implements ActionListener
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                DivisionCalculator calculator = new DivisionCalculator();
+                DivisionCalculatorVersion2 calculator = new DivisionCalculatorVersion2();
                 calculator.setVisible(true);
             }
         });
