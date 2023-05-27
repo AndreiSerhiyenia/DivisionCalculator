@@ -8,7 +8,6 @@ public class DivisionCalculator extends JFrame implements ActionListener {
     private JTextField dividendField;
     private JTextField divisorField;
     private JButton divisionButton;
-    private JPanel mainPanel;
 
     public DivisionCalculator() {
         setTitle("Division Calculator");
@@ -16,8 +15,8 @@ public class DivisionCalculator extends JFrame implements ActionListener {
         setSize(300, 150);
         setLocationRelativeTo(null);
 
-        mainPanel = new JPanel(new GridLayout(3, 2, 10, 10));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JLabel dividendLabel = new JLabel("Dividend:");
         dividendField = new JTextField();
@@ -26,13 +25,13 @@ public class DivisionCalculator extends JFrame implements ActionListener {
         divisionButton = new JButton("Divide");
         divisionButton.addActionListener(this);
 
-        mainPanel.add(dividendLabel);
-        mainPanel.add(dividendField);
-        mainPanel.add(divisorLabel);
-        mainPanel.add(divisorField);
-        mainPanel.add(divisionButton);
+        panel.add(dividendLabel);
+        panel.add(dividendField);
+        panel.add(divisorLabel);
+        panel.add(divisorField);
+        panel.add(divisionButton);
 
-        add(mainPanel);
+        add(panel);
     }
 
     @Override
@@ -48,16 +47,10 @@ public class DivisionCalculator extends JFrame implements ActionListener {
 
                 double quotient = dividend / divisor;
                 JOptionPane.showMessageDialog(this, "The quotient is: " + quotient, "Division Result", JOptionPane.INFORMATION_MESSAGE);
-
-                // Reset the window color if there were no errors
-                mainPanel.setBackground(null);
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Invalid input. Please enter valid numbers.", "Error", JOptionPane.ERROR_MESSAGE);
             } catch (ArithmeticException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-
-                // Set the window color to bright red when division by zero occurs
-                mainPanel.setBackground(Color.RED);
             }
         }
     }
